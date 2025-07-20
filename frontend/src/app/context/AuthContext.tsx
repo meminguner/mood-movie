@@ -31,6 +31,8 @@ interface AuthContextType {
     name?: string;
     email?: string;
     joinDate?: string;
+    watchedMovies?: { id: string | number; title: string }[];
+    watchLater?: { id: string | number; title: string }[];
   };
 }
 

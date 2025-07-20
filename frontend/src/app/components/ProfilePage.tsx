@@ -4,6 +4,13 @@ import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+type UserInfo = {
+  name?: string;
+  email?: string;
+  joinDate?: string;
+  watchedMovies?: any[]; // veya eğer film objesi ise: MovieType[]
+};
+
 const ProfilePage = () => {
   const { isLoggedIn, isLoading, userInfo, logout, updateUserInfo } = useAuth();
   const router = useRouter();
