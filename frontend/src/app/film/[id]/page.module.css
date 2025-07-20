@@ -1,0 +1,243 @@
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.filmTitle {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.content {
+  display: flex;
+  gap: 2rem;
+}
+
+.leftSection {
+  flex: 0 0 300px;
+}
+
+.posterContainer {
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.poster {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.watchedButton,
+.watchLaterButton {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.watchedButton {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.watchLaterButton {
+  background-color: #2196F3;
+  color: white;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.star,
+.emptyStar {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.deleteButton {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.filmDetails {
+  flex: 1;
+  background-color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 8px;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.yorumlarSection {
+  margin-top: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.yorumlarTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.yorumlarContainer {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+  padding-right: 1rem;
+}
+
+.yorumCard {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.yorumHeader {
+  margin-bottom: 0.5rem;
+}
+
+.kullaniciAdi {
+  font-weight: bold;
+  color: #2196F3;
+}
+
+.yorumMetni {
+  color: #666;
+  line-height: 1.5;
+}
+
+.yorumYap {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.yorumInput {
+  width: 100%;
+  min-height: 80px;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.yorumButton {
+  align-self: flex-end;
+  padding: 0.75rem 1.5rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.yorumButton:hover {
+  background-color: #45a049;
+}
+
+.actionButtonsModern {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0 2rem 0;
+  justify-content: flex-end;
+}
+
+.actionCardBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem 2.2rem;
+  border-radius: 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  background: #f7f7f7;
+  color: #333;
+  box-shadow: 0 2px 12px 0 rgba(60,60,60,0.07);
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(.4,0,.2,1);
+  outline: none;
+}
+
+.actionCardBtn:active {
+  transform: scale(0.97);
+}
+
+.actionCardBtn.watched {
+  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px 0 rgba(67,233,123,0.13);
+}
+
+.actionCardBtn.watchlater {
+  background: linear-gradient(90deg, #2196f3 0%, #6dd5fa 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px 0 rgba(33,150,243,0.13);
+}
+
+.actionCardBtn.disabled {
+  background: #e0e0e0;
+  color: #bdbdbd;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.actionCardBtn svg {
+  width: 1.3em;
+  height: 1.3em;
+}
+
+@media (max-width: 900px) {
+  .actionButtonsModern {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .leftSection {
+    flex: none;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .yorumlarContainer {
+    max-height: 300px;
+  }
+} 
