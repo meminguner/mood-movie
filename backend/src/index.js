@@ -11,8 +11,19 @@ const userRoute = require('./routes/user');
 const redis = require('redis');
 const amqp = require('amqplib');
 
+// MongoDB bağlantısı
+if (!process.env.MONGODB_URI) {
+  throw new Error('MONGODB_URI environment variable tanımlı değil!');
+}
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('MongoDB bağlantısı başarılı!'))
+  .catch((err) => console.error('MongoDB bağlantı hatası:', err));
+
 // Redis bağlantısı
-const redisClient = redis.createClient();
+if (!process.env.REDIS_URL) {
+  throw new Error('REDIS_URL environment variable tanımlı değil!');
+}
+const redisClient = redis.createClient({ url: process.env.REDIS_URL });
 redisClient.on('error', (err) => console.error('Redis bağlantı hatası:', err));
 redisClient.connect().then(() => console.log('Redis bağlantısı başarılı!'));
 
@@ -20,7 +31,10 @@ redisClient.connect().then(() => console.log('Redis bağlantısı başarılı!')
 let rabbitChannel = null;
 async function connectRabbitMQ() {
   try {
-    const connection = await amqp.connect('amqp://localhost');
+    if (!process.env.RABBITMQ_URL) {
+      throw new Error('RABBITMQ_URL environment variable tanımlı değil!');
+    }
+    const connection = await amqp.connect(process.env.RABBITMQ_URL);
     rabbitChannel = await connection.createChannel();
     await rabbitChannel.assertQueue('film_events');
     console.log('RabbitMQ bağlantısı başarılı!');
@@ -46,11 +60,6 @@ app.use(bodyParser.json());
 app.use('/api/film-robotu', filmRobotuRoute);
 app.use('/api/films', filmsRoute);
 app.use('/api/user', userRoute);
-
-// MongoDB bağlantısı
-mongoose.connect('mongodb://localhost:27017/mood-movie')
-.then(() => console.log('MongoDB bağlantısı başarılı!'))
-.catch((err) => console.error('MongoDB bağlantı hatası:', err));
 
 app.get('/', (req, res) => {
   res.send('Backend çalışıyor!');
