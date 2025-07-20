@@ -179,8 +179,6 @@ app.get('/api/films', async (req, res) => {
   console.log("qğdkasğda")
 });
 
-app.listen(PORT, () => {
-  console.log(`Sunucu ${PORT} portunda çalışıyor`);
-});
+module.exports = app;
 
 console.log('OPENAI_API_KEY:', process.env.OPENAI_API_KEY ? 'Var' : 'YOK');
