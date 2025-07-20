@@ -57,9 +57,9 @@ app.use(cors({
 }));
 
 app.use(bodyParser.json());
-app.use('/api/film-robotu', filmRobotuRoute);
-app.use('/api/films', filmsRoute);
-app.use('/api/user', userRoute);
+app.use('/film-robotu', filmRobotuRoute);
+app.use('/films', filmsRoute);
+app.use('/user', userRoute);
 
 app.get('/', (req, res) => {
   res.send('Backend çalışıyor!');
@@ -131,7 +131,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.post('/api/films', async (req, res) => {
+app.post('/films', async (req, res) => {
   try {
     const film = new Film(req.body);
     await film.save();
@@ -154,7 +154,7 @@ app.post('/api/films', async (req, res) => {
   }
 });
 
-app.get('/api/films', async (req, res) => {
+app.get('/films', async (req, res) => {
   console.log('/films e istek atıldı');
   try {
     // Redis cache kontrolü
@@ -173,7 +173,7 @@ app.get('/api/films', async (req, res) => {
     }
     res.json(films);
   } catch (err) {
-    console.error('Error in /api/films:', err);
+    console.error('Error in /films:', err);
     res.status(500).json({ message: 'Sunucu hatası', error: err.message });
   }
   console.log("qğdkasğda")
