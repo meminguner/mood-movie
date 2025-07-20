@@ -14,6 +14,7 @@ const RegisterForm = () => {
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const router = useRouter();
   const { login } = useAuth();
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const showToast = (message: string, type: 'success' | 'error') => {
     setToast({ message, type });
@@ -47,7 +48,7 @@ const RegisterForm = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/register', {
+      const response = await axios.post(`${apiUrl}/register`, {
         name,
         email,
         password,

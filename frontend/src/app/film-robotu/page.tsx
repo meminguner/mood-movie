@@ -20,7 +20,8 @@ export default function FilmRobotuPage() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:8080/api/film-robotu', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const res = await fetch(`${apiUrl}/film-robotu`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: [] })
@@ -44,7 +45,8 @@ export default function FilmRobotuPage() {
     setLoading(true);
     setInput('');
     try {
-      const res = await fetch('http://localhost:8080/api/film-robotu', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const res = await fetch(`${apiUrl}/film-robotu`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: newMessages.map(m => ({ role: m.role, content: m.content })) })
