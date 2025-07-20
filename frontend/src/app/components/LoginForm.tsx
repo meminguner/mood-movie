@@ -35,7 +35,7 @@ const LoginForm = () => {
     }
 
     try {
-      const apiUrl = ;
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
       const response = await axios.post(`${apiUrl}/login`, {
         email,
         password
